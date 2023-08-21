@@ -1,24 +1,22 @@
 version: 2.1
-orbs:
-  python: circleci/python@2.0.3
+
 jobs:
   build:
-    executor: python/default
+    docker:
+      - image: "circleci/python:3.6.4"
     steps:
       - checkout  #downloading a copy of the code from the code repository
-      - python/install-packages:
-          pip-dependency-file: requirements.txt
-          pkg-manager: pip
       - run:
-          name: Run tests
+          name: install req
           command: |
-            pytest --version 
+            pip install -r requirements.txt 
       - persist_to_workspace:
           root: .
           paths:
             - .
   run_test:
-    executor: python/default
+    docker:
+      - image: "circleci/python:3.6.4"
     steps:
       - attach_workspace:
           at: .
@@ -31,7 +29,8 @@ jobs:
           paths:
             - .
   deploy: 
-    executor: python/default
+    docker:
+      - image: "circleci/python:3.6.4"
     steps:
       - attach_workspace:
           at: .

@@ -26,7 +26,6 @@ jobs:
         paths:
           - .
   deploy: 
-    deploy: 
     executor: python/default
     steps:
       - attach_workspace:

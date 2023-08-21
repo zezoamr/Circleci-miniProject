@@ -9,6 +9,10 @@ jobs:
       - python/install-packages:
           pip-dependency-file: requirements.txt
           pkg-manager: pip
+      - run:
+          name: Run tests
+          command: |
+            pytest --version 
       - persist_to_workspace:
           root: .
           paths:

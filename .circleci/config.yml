@@ -9,8 +9,8 @@ jobs:
       - run:
           name: install req
           command: |
-            pip install --upgrade pip
-            pip install -r requirements.txt 
+            pip install --upgrade --user pip
+            pip install --user -r requirements.txt
       - persist_to_workspace:
           root: .
           paths:

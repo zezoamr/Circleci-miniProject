@@ -12,15 +12,15 @@ jobs:
             pip install --upgrade --user pip
             pip install --user -r requirements.txt
       - persist_to_workspace:
-          root: .
+          root: /usr/local
           paths:
-            - .
+            - lib/python3.6/site-packages
   run_test:
     docker:
       - image: "circleci/python:3.6.4"
     steps:
       - attach_workspace:
-          at: .
+          at: /usr/local
       - run:
           name: Run tests
           command: |

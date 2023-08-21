@@ -46,6 +46,6 @@ workflows:
       - deploy:
           requires:
             - run_test
-        filters:
+          filters:
               branches:
                 only: main #deploy only happens with changes on main
